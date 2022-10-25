@@ -1,0 +1,40 @@
+.toDoList {
+  border-top: 1px solid var(--gray-400);
+  border-radius: .5rem;
+
+  /* visibility: hidden;
+  height: 0;
+  width: 0;
+  margin: 0;
+  padding: 0;
+  border: none; */
+}
+.message {
+  margin: 4rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  /* visibility: hidden;
+  height: 0;
+  width: 0;
+  margin: 0;
+  padding: 0;
+  border: none; */
+}
+.message div {
+  color: var(--gray-400);
+  display: flex;
+  margin-bottom: 1rem;
+}
+.message p {
+  color: var(--gray-300);
+}
+/* .invisible {
+  visibility: hidden;
+  height: 0;
+  width: 0;
+  margin: 0;
+  padding: 0;
+  border: none;
+} */
