@@ -7,44 +7,31 @@ import { v4 as uuidv4 } from 'uuid';
 import styles from './Main.module.css'
 
 export function Main() {
-  const [tasks, setTasks] = useState ([
-    {
-      id: uuidv4(),
-      description: 'Integer urna interdum massaauctor neque turpis semper. Dius vel sed fames integer',
-      isChecked: false,
-    }
+  function taskId () {
+    return (uuidv4())
+  };
+  let id = taskId();
+  // const [taskId, setTaskId] = useState ([uuidv4()])
+  const taskIsChecked = false;
+  const [taskDescription, setTaskDescription] = useState ([ 
+    'Integer urna interdum massaauctor neque turpis semper. Dius vel sed fames integer'
   ])
 
-  const [newTaskText, setNewTaskText] = useState(
-    {  
-      id: uuidv4(),
-      description: '',
-      isChecked: false,
-    }
-  )
+  const [newTaskDescriptionText, setNewTaskDescriptionText] = useState('')
 
   function handleCreateNewTask() {
     event.preventDefault()
-    
-    setTasks([...tasks, newTaskText]);
 
-    setNewTaskText.description('');
+    setTaskDescription([...taskDescription, newTaskDescriptionText]);
+    setNewTaskDescriptionText('');
   }
 
   function handleNewTaskChange() {
-    setNewTaskText(oldTasks =>{
-        return {
-          ...oldTasks,
-          id: uuidv4(),
-          description: event.target.value
-        }
-      })
-    event.target.setCustomValidity('');
+    setNewTaskDescriptionText(event.target.value);
+    //event.target.setCustomValidity('');
   }
-  console.log(tasks)
-  console.log(setTasks)
-  console.log(setNewTaskText)
-  console.log(newTaskText)
+  console.log(taskDescription)
+  console.log(newTaskDescriptionText)
 
   return (
     <article>
@@ -54,7 +41,7 @@ export function Main() {
           placeholder="Adicione uma nova tarefa"
           onChange={handleNewTaskChange} 
           // onInvalid={handleNewTaskInvalid}
-          value={newTaskText.description}
+          value={newTaskDescriptionText}
           cols="30" 
           rows="1"
         />
@@ -83,13 +70,13 @@ export function Main() {
         <Message/>
       </div>
       <div className={styles.toDoTasks}>
-        {tasks.map(task =>{
+        {taskDescription.map(task =>{
           return (
             <Task
-              key={task.id}
-              id={task.id}
-              isChecked={task.isChecked}
-              description={task.description}
+              key={id}
+              id={id}
+              isChecked={taskIsChecked}
+              description={task}
               // onDeleteTask={deleteTask}
             />
           )
